@@ -1,9 +1,17 @@
 import React from 'react'
+import { CardElement, Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import StripePaymentForm from './stripePaymentForm';
+
+
+
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const ContactForm = (props) => {
   const [formData, setFormData]= React.useState({
     company: '',
-    name: '',
+    first_name: '',
+    last_name:'',
     email: '',
     phone: '',
     username: '',
@@ -52,9 +60,16 @@ const ContactForm = (props) => {
         <input 
         onChange={handleChange}
         type="text" 
-        name="name" 
+        name="first_name" 
         placeholder="Name"
-        value={formData.name} />
+        value={formData.first_name} />
+
+    <input 
+        onChange={handleChange}
+        type="text" 
+        name="last_name" 
+        placeholder="Name"
+        value={formData.last_name} />
 
         <input 
         onChange={handleChange}
@@ -107,7 +122,14 @@ const ContactForm = (props) => {
         <label htmlFor="newsletter">Keep me up to date with the latest news</label>
         
         <button type="submit" onClick={handleSubmit}>
-          {props.title === 'Basic' ? "Go to My Account" : 'Continue to Payment'}</button>
+          {props.title === 'Basic' ? "Go to My Account" : 'Continue to Payment'}
+        </button>
+        
+        {props.title !== 'Basic' && (
+        <Elements stripe={stripePromise}>
+          <StripePaymentForm />
+        </Elements>
+      )}
       </form>
     );
   };

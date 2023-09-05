@@ -5,7 +5,7 @@ import Teir from './components/teir'
 
 function App() {
   return (
-    <div>
+    <div className='product-list'>
       <Teir
       price = 'Free'
       title = 'Basic'/>

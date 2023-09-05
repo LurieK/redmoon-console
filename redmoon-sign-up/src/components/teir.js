@@ -9,17 +9,15 @@
     }
     
     return (
-    <section>
-       
-        
+    <section className="product-card">
           <div className="product">
-            <div className="description">
+            <div className="teir-description">
               <h3>{props.title}</h3>
               <h5>{props.price}</h5>
             </div>
           </div>
             {!showContactFrom ? 
-            <button className="create-account button"
+            <button className="create-account-button"
             onClick={showForm}>
             Create Account
             </button>
