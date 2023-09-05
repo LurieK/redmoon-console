@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Teir from './teir'
+import Teir from './components/teir'
 // import Stripe from './Stripe';
 
 function App() {
