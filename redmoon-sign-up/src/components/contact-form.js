@@ -92,7 +92,10 @@ const ContactForm = () => {
         name="confPassword" 
         placeholder="Confirm Password"
         value={formData.confPassword} />
-        {passwordMatch ? <p>Passwords Match!</p>: <p>Passwords don't match.  Please check your password and try again.</p>}
+        
+        {passwordMatch ? <p>Passwords match!</p> 
+        : passwordMatch === false ? <p>Passwords don't match! Please double check your password and try again.</p> 
+        : null}
 
         <input 
         onChange={handleChange}
