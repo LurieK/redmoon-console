@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ContactForm = () => {
+const ContactForm = (props) => {
   const [formData, setFormData]= React.useState({
     company: '',
     name: '',
@@ -105,7 +105,9 @@ const ContactForm = () => {
         checked={formData.newsletter}/>
 
         <label htmlFor="newsletter">Keep me up to date with the latest news</label>
-        <button type="submit">Continue to Payment</button>
+        
+        <button type="submit" onClick={handleSubmit}>
+          {props.title === 'Basic' ? "Go to My Account" : 'Continue to Payment'}</button>
       </form>
     );
   };

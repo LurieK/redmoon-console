@@ -23,7 +23,8 @@
             onClick={showForm}>
             Create Account
             </button>
-            :<ContactForm/> }
+            :<ContactForm
+            title={props.title}/> }
        </section> 
     
    );
