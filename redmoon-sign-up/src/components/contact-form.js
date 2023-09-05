@@ -8,9 +8,21 @@ const ContactForm = () => {
     phone: '',
     username: '',
     password: '',
-    confPassword: ''
+    confPassword: '',
+    newsletter: true,
 
   })
+  console.log(formData.newsletter)
+  function handleChange(event){
+    const {type, name, checked, value} = event.target
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : value
+      }
+    })
+    
+  }
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -19,15 +31,63 @@ const ContactForm = () => {
   
     return (
       <form className='sign-up-form' onSubmit={handleSubmit}>
-        <input type="text" name="company" placeholder="Company" />
-        <input type="text" name="name" placeholder="Name" />
-        <input type="email" name="email" placeholder="Email" />
-        <input type="text" name="phone" placeholder="Phone" />
-        <input type="text" name="user-name" placeholder="User Name" />
-        <input type="text" name="password" placeholder="Password" />
-        <p>Must be more then 8 characters and include at least 1 number and 1 symbole</p>
-        <input type="text" name="confirm-password" placeholder="Confirm Password" />
-        <input type="checkbox" name="newsletter" />
+        <input 
+        onChange={handleChange}
+        type="text" 
+        name="company" 
+        placeholder="Company"
+        value={formData.company} />
+
+        <input 
+        onChange={handleChange}
+        type="text" 
+        name="name" 
+        placeholder="Name"
+        value={formData.name} />
+
+        <input 
+        onChange={handleChange}
+        type="email" 
+        name="email" 
+        placeholder="Email"
+        value={formData.email} />
+
+        <input 
+        onChange={handleChange}
+        type="text" 
+        name="phone" 
+        placeholder="Phone Number"
+        value={formData.phone} />
+
+        <input 
+        onChange={handleChange}
+        type="text" 
+        name="username" 
+        placeholder="User Name"
+        value={formData.username} />
+
+        <input 
+        onChange={handleChange}
+        type="password" 
+        name="password" 
+        placeholder="Password"
+        value={formData.password} />
+
+        <p>Password must be more then 8 characters and include at least 1 number and 1 symbole</p>
+        <input 
+        onChange={handleChange}
+        type="password" 
+        name="confPassword" 
+        placeholder="Confirm Password"
+        value={formData.confPassword} />
+
+        <input 
+        onChange={handleChange}
+        type="checkbox" 
+        name="newsletter" 
+        id='newsletter'
+        checked={formData.newsletter}/>
+
         <label htmlFor="newsletter">Keep me up to date with the latest news</label>
         <button type="submit">Continue to Payment</button>
       </form>
