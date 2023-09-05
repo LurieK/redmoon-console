@@ -12,7 +12,10 @@ const ContactForm = () => {
     newsletter: true,
 
   })
-  console.log(formData.newsletter)
+
+  const [passwordMatch, setPasswordMatch]=React.useState(null)
+
+
   function handleChange(event){
     const {type, name, checked, value} = event.target
     setFormData(prevFormData => {
@@ -22,6 +25,14 @@ const ContactForm = () => {
       }
     })
     
+  }
+
+  function passwordMatchCheck(){
+    if(formData.password === formData.confPassword){
+      setPasswordMatch(true)
+    }else{
+      setPasswordMatch(false)
+    }
   }
 
     const handleSubmit = (e) => {
@@ -76,10 +87,12 @@ const ContactForm = () => {
         <p>Password must be more then 8 characters and include at least 1 number and 1 symbole</p>
         <input 
         onChange={handleChange}
+        onBlur={passwordMatchCheck}
         type="password" 
         name="confPassword" 
         placeholder="Confirm Password"
         value={formData.confPassword} />
+        {passwordMatch ? <p>Passwords Match!</p>: <p>Passwords don't match.  Please check your password and try again.</p>}
 
         <input 
         onChange={handleChange}
