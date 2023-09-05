@@ -18,11 +18,12 @@
               <h5>{props.price}</h5>
             </div>
           </div>
+            {!showContactFrom ? 
             <button className="create-account button"
             onClick={showForm}>
-              Create Account
+            Create Account
             </button>
-            {showContactFrom ? <ContactForm/> : ''}
+            :<ContactForm/> }
        </section> 
     
    );
