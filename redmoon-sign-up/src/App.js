@@ -13,10 +13,10 @@ function App() {
       title = 'Basic'/>
       <Teir
       price= '$20/month'
-      title = 'Professional'/>
+      title = 'Premium'/>
       <Teir
       price='$50/month'
-      title = 'Company'/>
+      title = 'Business'/>
       
     </div>
    

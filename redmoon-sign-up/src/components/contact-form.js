@@ -124,13 +124,13 @@ const ContactForm = (props) => {
 
         <label htmlFor="newsletter">Keep me up to date with the latest news</label>
         <div className='submit-btn'>
-          {props.title!== 'Basic' ?
+          {props.title !== 'Basic' ?
           <button >
             Continue to Payment
           </button>
           :
           <button type="submit" onSubmit={handleSubmit}>
-            Go to My Account" : 'Continue to Payment'
+            Go to My Account
           </button>
           }
         </div>
