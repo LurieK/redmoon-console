@@ -18,7 +18,7 @@ function StripeParent(props) {
   }, [])
 
   return (
-    <Elements stripe={stripePromise}>
+    <Elements stripe={stripe}>
       <ContactForm title={props.title} /> 
     </Elements>
   );
