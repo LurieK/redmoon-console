@@ -5,7 +5,6 @@ import StripePaymentForm from './stripePaymentForm';
 
 
 
-const stripePromise = loadStripe('pk_live_51Jopl3CrD5CMQwqmJZRW4JfF2dUdrZzqmxAz479JLYfnLdo0wITUOoUXubSV29T79kyXMPIyCWdcc9LBQM6olpry008acQTQqB');
 
 const ContactForm = (props) => {
   const [formData, setFormData]= React.useState({
@@ -127,9 +126,9 @@ const ContactForm = (props) => {
         
         <div className='check-out'>
         {props.title !== 'Basic' && 
-        <Elements stripe={stripePromise}>
-          <StripePaymentForm />
-        </Elements>
+        
+          <StripePaymentForm title={props.title}/>
+      
       }
         </div>
       </form>
