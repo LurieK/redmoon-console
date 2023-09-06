@@ -48,7 +48,7 @@ const ContactForm = (props) => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      localStorage('formData',JSON.stringify(formData))
+      localStorage.setItem('formData',JSON.stringify(formData))
     };
   
     return (
