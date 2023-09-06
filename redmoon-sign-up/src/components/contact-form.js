@@ -5,7 +5,7 @@ import StripePaymentForm from './stripePaymentForm';
 
 
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe('pk_live_51Jopl3CrD5CMQwqmJZRW4JfF2dUdrZzqmxAz479JLYfnLdo0wITUOoUXubSV29T79kyXMPIyCWdcc9LBQM6olpry008acQTQqB');
 
 const ContactForm = (props) => {
   const [formData, setFormData]= React.useState({
@@ -49,7 +49,7 @@ const ContactForm = (props) => {
     };
   
     return (
-      <form className='sign-up-form' onSubmit={handleSubmit}>
+      <form className='contact-form' onSubmit={handleSubmit}>
         <input 
         onChange={handleChange}
         type="text" 
@@ -121,15 +121,17 @@ const ContactForm = (props) => {
 
         <label htmlFor="newsletter">Keep me up to date with the latest news</label>
         
-        <button type="submit" onClick={handleSubmit}>
+        <button type="submit" onSubmit={handleSubmit}>
           {props.title === 'Basic' ? "Go to My Account" : 'Continue to Payment'}
         </button>
         
-        {props.title !== 'Basic' && (
+        <div className='check-out'>
+        {props.title !== 'Basic' && 
         <Elements stripe={stripePromise}>
           <StripePaymentForm />
         </Elements>
-      )}
+      }
+        </div>
       </form>
     );
   };

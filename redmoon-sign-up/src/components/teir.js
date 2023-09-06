@@ -1,5 +1,5 @@
  import React from 'react'
- import ContactForm from './contact-form'
+ import StripeParent from './stripeParent'
  
  function Teir (props){
     const [showContactFrom, setShowContactForm] = React.useState(false)
@@ -9,20 +9,22 @@
     }
     
     return (
-    <section className="product-card">
+    <section className="teir">
           <div className="product">
-            <div className="teir-description">
+            <div className="product-description">
               <h3>{props.title}</h3>
               <h5>{props.price}</h5>
             </div>
           </div>
+          <div className='show-form'>
             {!showContactFrom ? 
             <button className="create-account-button"
             onClick={showForm}>
             Create Account
             </button>
-            :<ContactForm
+            :<StripeParent
             title={props.title}/> }
+          </div>
        </section> 
     
    );
