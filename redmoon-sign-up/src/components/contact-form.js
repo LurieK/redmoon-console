@@ -22,6 +22,10 @@ const ContactForm = (props) => {
 
   const [passwordMatch, setPasswordMatch]=React.useState(null)
 
+  console.log(passwordMatch)
+  console.log(formData)
+  console.log(props.title)
+
 
   function handleChange(event){
     const {type, name, checked, value} = event.target

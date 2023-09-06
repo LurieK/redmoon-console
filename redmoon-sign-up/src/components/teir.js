@@ -2,8 +2,8 @@
  import StripeParent from './stripeParent'
  
  function Teir (props){
-    const [showContactFrom, setShowContactForm] = React.useState(false)
-    
+    const [showContactForm, setShowContactForm] = React.useState(false)
+    console.log(showContactForm)
     function showForm(){
         setShowContactForm(prevContactForm=> !prevContactForm)
     }
@@ -17,7 +17,7 @@
             </div>
           </div>
           <div className='show-form'>
-            {!showContactFrom ? 
+            {!showContactForm ? 
             <button className="create-account-button"
             onClick={showForm}>
             Create Account

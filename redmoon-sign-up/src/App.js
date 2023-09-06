@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import Teir from './components/teir'
+
 // import Stripe from './Stripe';
 
 function App() {
   return (
+
     <div className='product-list'>
       <Teir
       price = 'Free'
@@ -17,6 +19,7 @@ function App() {
       title = 'Company'/>
       
     </div>
+   
   );
 }
 
