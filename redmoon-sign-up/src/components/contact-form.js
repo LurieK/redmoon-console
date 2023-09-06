@@ -123,20 +123,25 @@ const ContactForm = (props) => {
         checked={formData.newsletter}/>
 
         <label htmlFor="newsletter">Keep me up to date with the latest news</label>
-        
-        <button type="submit" onSubmit={handleSubmit}>
-          {props.title === 'Basic' ? "Go to My Account" : 'Continue to Payment'}
-        </button>
-        
-        <div className='check-out'>
-        {props.title !== 'Basic' && 
-        
-          <StripePaymentForm title={props.title}/>
-      
-      }
+        <div className='submit-btn'>
+          {title!== basic ?
+          <button onSubmit={}>
+            Continue to Payment
+          </button>
+          :
+          <button type="submit" onSubmit={handleSubmit}>
+            Go to My Account" : 'Continue to Payment'
+          </button>
+          }
         </div>
       </form>
     );
   };
   export default ContactForm
   
+   {/* <div className='check-out'> */}
+        {/* {
+        props.title !== 'Basic' && 
+          <p>This is a paid teir</p>
+        }
+           <StripePaymentForm title={props.title}/> */}

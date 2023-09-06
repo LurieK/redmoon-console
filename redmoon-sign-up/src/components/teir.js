@@ -1,5 +1,6 @@
  import React from 'react'
  import StripeParent from './stripeParent'
+ import ContactForm from './contact-form'
  
  function Teir (props){
     const [showContactForm, setShowContactForm] = React.useState(false)
@@ -22,7 +23,7 @@
             onClick={showForm}>
             Create Account
             </button>
-            :<StripeParent
+            :<ContactForm
             title={props.title}/> }
           </div>
        </section> 

@@ -5,6 +5,14 @@ require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 
+app.use(express.json());
+
+
+app.get('/', (req, res) => {
+  res.send('Server is running.');
+});
+
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
