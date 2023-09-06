@@ -48,7 +48,7 @@ const ContactForm = (props) => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      // Handle form submission, save data, etc.
+      localStorage('formData',JSON.stringify(formData))
     };
   
     return (
@@ -124,8 +124,8 @@ const ContactForm = (props) => {
 
         <label htmlFor="newsletter">Keep me up to date with the latest news</label>
         <div className='submit-btn'>
-          {title!== basic ?
-          <button onSubmit={}>
+          {props.title!== 'Basic' ?
+          <button >
             Continue to Payment
           </button>
           :
