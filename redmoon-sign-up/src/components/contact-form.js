@@ -21,7 +21,9 @@ const ContactForm = (props) => {
   })
 
   const [passwordMatch, setPasswordMatch]=React.useState(null)
-
+  const [stripePayment, setStripePayment] = React.useState(false)
+  const stripePromise = loadStripe('pk_live_51Jopl3CrD5CMQwqmJZRW4JfF2dUdrZzqmxAz479JLYfnLdo0wITUOoUXubSV29T79kyXMPIyCWdcc9LBQM6olpry008acQTQqB');
+    
   console.log(passwordMatch)
   console.log(formData)
   console.log(props.title)
@@ -46,11 +48,17 @@ const ContactForm = (props) => {
     }
   }
 
-    const handleSubmit = (e) => {
+    function handleSubmit(e){
       e.preventDefault();
       localStorage.setItem('formData',JSON.stringify(formData))
     };
-  
+
+    function handleContinueToPayment(e){
+      e.preventDefault();
+      localStorage.setItem('formData',JSON.stringify(formData))
+      setStripePayment(prevStripePayment => !prevStripePayment)
+    }
+
     return (
       <form className='contact-form' onSubmit={handleSubmit}>
         <input 
@@ -125,9 +133,16 @@ const ContactForm = (props) => {
         <label htmlFor="newsletter">Keep me up to date with the latest news</label>
         <div className='submit-btn'>
           {props.title !== 'Basic' ?
-          <button >
+          <>
+          <button onClick={handleContinueToPayment}>
             Continue to Payment
           </button>
+          {stripePayment && (
+            <Elements publicKey={stripePromise}>
+              <StripePaymentForm />
+            </Elements>
+          )}
+        </>
           :
           <button type="submit" onSubmit={handleSubmit}>
             Go to My Account
@@ -139,9 +154,4 @@ const ContactForm = (props) => {
   };
   export default ContactForm
   
-   {/* <div className='check-out'> */}
-        {/* {
-        props.title !== 'Basic' && 
-          <p>This is a paid teir</p>
-        }
-           <StripePaymentForm title={props.title}/> */}
+  
