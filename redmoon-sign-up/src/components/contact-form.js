@@ -1,6 +1,6 @@
 import React from 'react'
-import { CardElement, Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import StripePaymentForm from './stripePaymentForm';
 
 
@@ -23,7 +23,7 @@ const ContactForm = (props) => {
   const [passwordMatch, setPasswordMatch]=React.useState(null)
   const [stripePayment, setStripePayment] = React.useState(false)
   const stripePromise = loadStripe('pk_live_51Jopl3CrD5CMQwqmJZRW4JfF2dUdrZzqmxAz479JLYfnLdo0wITUOoUXubSV29T79kyXMPIyCWdcc9LBQM6olpry008acQTQqB');
-    
+
   console.log(passwordMatch)
   console.log(formData)
   console.log(props.title)
@@ -138,9 +138,9 @@ const ContactForm = (props) => {
             Continue to Payment
           </button>
           {stripePayment && (
-            <Elements publicKey={stripePromise}>
+            <Elements stripeKey={stripePromise}>
               <StripePaymentForm />
-            </Elements>
+              </Elements>
           )}
         </>
           :

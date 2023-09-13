@@ -1,31 +1,37 @@
 import React from 'react';
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { useStripe, useElements, CardElement, AddressElement } from '@stripe/react-stripe-js';
 
-const StripePaymentForm= (props)=> {
+function PaymentForm() {
   const stripe = useStripe();
   const elements = useElements();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: elements.getElement(CardElement),
-    });
+    if (!stripe || !elements) {
+      return;
+    }
 
-    if (!error) {
-      console.log(paymentMethod);
-      // Send paymentMethod.id to your server or handle payment
+    const cardElement = elements.getElement(CardElement);
+    const { token, error } = await stripe.createToken(cardElement);
+
+    if (error) {
+      console.error(error);
+    } else {
+      // Save the token to localStorage for demonstration purposes
+      localStorage.setItem('stripeToken', JSON.stringify(token));
+      alert('Stripe token saved to localStorage!');
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      
       <CardElement />
       <button type="submit" disabled={!stripe}>
         Pay
       </button>
     </form>
   );
-};
+}
 
-export default StripePaymentForm;
+export default PaymentForm;

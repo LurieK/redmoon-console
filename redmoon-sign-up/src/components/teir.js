@@ -1,5 +1,4 @@
  import React from 'react'
- import StripeParent from './stripeParent'
  import ContactForm from './contact-form'
  
  function Teir (props){
